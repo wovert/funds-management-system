@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const gravatar = require('gravatar')
 const passport = require('passport')
-import { User } from '../../models/Users'
+import { User } from '../../models/User'
 const router = express.Router()
 
 // $route GET api/users/test
@@ -47,7 +47,7 @@ router.get('/test', (req, res) => {
 router.post('/register', (req, res) => {
 
   console.log(req.body.email)
-  const { email, name, password } = req.body
+  const { email, name, password, identity } = req.body
 
   // search email in database
   User.findOne({
@@ -67,6 +67,7 @@ router.post('/register', (req, res) => {
         name,
         email,
         avatar,
+        identity,
         password
       })
       bcrypt.genSalt(10, (err, salt) => {
@@ -193,7 +194,8 @@ router.get(
     res.json({
       id: req.user.id,
       name: req.user.name,
-      email: req.user.email
+      email: req.user.email,
+      identity: req.user.identity
     })
 })
 

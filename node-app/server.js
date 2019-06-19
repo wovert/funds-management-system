@@ -6,6 +6,7 @@ const passport = require('passport')
 // custom modules
 import { mongoConfig } from './config'
 import users from './routes/api/users'
+import profiles from './routes/api/profiles'
 
 // create app application
 const app = express()
@@ -33,10 +34,9 @@ app.use(bodyParser.json())
 // set port
 const port = process.env.PORT || 5000
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
-})
+// 接口路由
 app.use('/api/users', users)
+app.use('/api/profiles', profiles)
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)

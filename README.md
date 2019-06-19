@@ -45,3 +45,21 @@ vim .babelrc
 ```
 
 运行 `apidoc -i src/ -o docs`，就会看到项目里边多了一个`docs`的文件夹，打开里边的`index.html`
+
+## 前段
+
+```sh
+vue create client
+```
+
+## 前后端连载
+
+```sh
+npm i concurrently -S
+vim client/package.json
+  "start": "npm run serve"
+vim package.json
+  "client-install": "npm install --prefix client",
+  "client": "npm start --prefix client",
+  "dev": "concurrently \"npm run server\" \"npm run client\""
+```
