@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 const bodyParser = require('body-parser')
+const passport = require('passport')
 
 // custom modules
 import { mongoConfig } from './config'
@@ -18,10 +19,16 @@ mongoose.connect(db, {useNewUrlParser: true })
   .catch(err => console.log(err))
 
 // use body-parser middleware
+
+// passport 初始化
+app.use(passport.initialize())
+require('./config/passport')(passport)
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+
 
 // set port
 const port = process.env.PORT || 5000

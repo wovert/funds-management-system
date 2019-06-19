@@ -5,7 +5,7 @@
 - node+vue+element-ui+mLab
 
 ```sh
-npm i express mongoose body-parser bcrypt --save
+npm i express mongoose body-parser bcrypt gravatar jsonwebtoken passport passport-jwt --save
 npm i @babel/core @babel/node @babel/cli @babel/preset-env --D
 vim .babelrc
   {
