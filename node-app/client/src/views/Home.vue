@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-      <h1 class="title">米修在线</h1>
+      <h1 class="title">修宏网络传媒</h1>
       <p class="lead"> 专注于线上教育, 用心做课程, 用心做服务! </p>
     </div>
   </div>

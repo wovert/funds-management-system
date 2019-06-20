@@ -4,27 +4,27 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const types = {
-  SET_IS_AUTNENTIATED: 'SET_IS_AUTNENTIATED', // 是否认证通过
+  SET_AUTHENTICATED: 'SET_AUTHENTICATED', // 是否认证通过
   SET_USER: 'SET_USER' // 用户信息
 }
 
 const state = { // 需要维护的状态
-  isAutnenticated: false, // 是否认证
+  isAuthenticated: false, // 是否认证
   user: {} // 存储用户信息
 }
 
 const getters = {
-  isAutnenticated: state => state.isAutnenticated,
+  isAuthenticated: state => state.isAuthenticated,
   user: state => state.user
 }
 
 const mutations = {
-  [types.SET_IS_AUTNENTIATED] (state, isAutnenticated) {
-    state.isAutnenticated = isAutnenticated || false
-    // if (isAutnenticated)
-    //   state.isAutnenticated = isAutnenticated
+  [types.SET_AUTHENTICATED] (state, isAuthenticated) {
+    state.isAuthenticated = isAuthenticated || false
+    // if (isAuthenticated)
+    //   state.isAuthenticated = isAuthenticated
     // else
-    //   state.isAutnenticated = false
+    //   state.isAuthenticated = false
   },
   [types.SET_USER] (state, user) {
     state.user = user || {}
@@ -36,14 +36,14 @@ const mutations = {
 }
 
 const actions = {
-  setIsAutnenticated: ({ commit }, isAutnenticated) => {
-    commit(types.SET_IS_AUTNENTIATED, isAutnenticated)
+  setAuthenticated: ({ commit }, isAuthenticated) => {
+    commit(types.SET_AUTHENTICATED, isAuthenticated)
   },
   setUser: ({ commit }, user) => {
     commit(types.SET_USER, user)
   },
   clearCurrentState: ({ commit }) => {
-    commit(types.SET_IS_AUTNENTIATED, false)
+    commit(types.SET_AUTHENTICATED, false)
     commit(types.SET_USER, null)
   }
 }

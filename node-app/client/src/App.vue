@@ -11,7 +11,7 @@ export default {
   created () {
     if (localStorage.eleToken) {
       const decode = jwtDecode(localStorage.eleToken)
-      this.$store.dispatch('setIsAutnenticated', !this.isEmpty(decode))
+      this.$store.dispatch('setAuthenticated', !this.isEmpty(decode))
       this.$store.dispatch('setUser', decode)
     }
   },

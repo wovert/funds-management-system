@@ -83,17 +83,27 @@ export default {
       this.$refs[form].validate(valid => {
         if (valid) {
           // 表单数据验证完成之后，提交数据
-          const url =
-            this.dialog.option === 'add' ? 'add' : `edit/${this.form.id}`
-          this.$axios.post(`/api/profile/${url}`, this.form).then(res => {
-            // 操作成功
-            this.$message({
-              message: '保存成功！',
-              type: 'success'
+          if (this.dialog.option === 'add') {
+            this.$axios.post(`/api/profiles`, this.form).then(res => {
+              // 操作成功
+              this.$message({
+                message: '保存成功！',
+                type: 'success'
+              })
+              this.dialog.show = true
+              this.$emit('update')
             })
-            this.dialog.show = true
-            this.$emit('update')
-          })
+          } else if (this.dialog.option === 'edit') {
+            this.$axios.put(`/api/profiles/${this.form.id}`, this.form).then(res => {
+              // 操作成功
+              this.$message({
+                message: '保存成功！',
+                type: 'success'
+              })
+              this.dialog.show = true
+              this.$emit('update')
+            })
+          }
         }
       })
     }

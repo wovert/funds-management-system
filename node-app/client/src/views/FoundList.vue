@@ -187,7 +187,7 @@ export default {
   methods: {
     getProfile () {
       // 获取表格数据
-      this.$axios('/api/profile').then(res => {
+      this.$axios('/api/profiles').then(res => {
         // this.tableData = res.data
         this.allTableData = res.data
         this.filterTableData = res.data
@@ -214,7 +214,7 @@ export default {
     },
     onDeleteMoney (row, index) {
       // 删除
-      this.$axios.delete(`/api/profile/delete/${row._id}`).then(res => {
+      this.$axios.delete(`/api/profile/${row._id}`).then(res => {
         this.$message('删除成功')
         this.getProfile()
       })

@@ -68,16 +68,11 @@ export default {
             // 登录成功
             const { token } = res.data
             localStorage.setItem('eleToken', token)
-
-            // 解析token
-            const decode = jwtDecode(token)
-
+            const decode = jwtDecode(token) // 解析token
             // 存储数据
-            this.$store.dispatch('setIsAutnenticated', !this.isEmpty(decode))
+            this.$store.dispatch('setAuthenticated', !this.isEmpty(decode))
             this.$store.dispatch('setUser', decode)
-
-            // 页面跳转
-            this.$router.push('/index')
+            this.$router.push('/index') // 页面跳转
           })
         } else {
           console.log('error submit!!')
