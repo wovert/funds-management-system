@@ -7,10 +7,10 @@
       </el-col>
       <el-col :span='6' class="user">
         <div class="userinfo">
-          <img :src="user.avatar" class='avatar' alt="">
-            <div class='welcome'>
-              <p class='name comename'>欢迎</p>
-              <p class='name avatarname'>{{user.name}}</p>
+          <img :src="user.avatar" class='avatar' alt="" />
+          <div class='welcome'>
+            <p class='name comename'>欢迎</p>
+            <p class='name avatarname'>{{user.name}}</p>
           </div>
           <span class='username'>
             <el-dropdown
@@ -31,14 +31,21 @@
   </header>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'head-nav',
   computed: {
-    user () {
-      return this.$store.getters.user
-    }
+    ...mapGetters([
+      'user'
+    ])
+    // user () {
+    //   return this.$store.getters.user
+    // }
   },
   methods: {
+    ...mapActions({
+      clearLoginStatus: 'clearCurrentState' // 映射为 `this.$store.dispatch('clearCurrentState')`
+    }),
     setDialogInfo (cmditem) {
       if (!cmditem) {
         console.log('test')
@@ -55,16 +62,13 @@ export default {
       }
     },
     showInfoList () {
-      // 个人信息
-      this.$router.push('/infoshow')
+      this.$router.push('/infoshow') // 个人信息
     },
     logout () {
-      // 清除token
-      localStorage.removeItem('eleToken')
-      this.$store.dispatch('clearCurrentState')
-
-      // 页面跳转
-      this.$router.push('/login')
+      localStorage.removeItem('eleToken') // 清除token
+      // this.$store.dispatch('clearCurrentState')
+      this.clearLoginStatus()
+      this.$router.push('/login') // 页面跳转
     }
   }
 }

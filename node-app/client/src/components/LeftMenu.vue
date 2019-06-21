@@ -1,5 +1,5 @@
 <template>
-  <el-row class="menu_page">
+  <el-row class="menu-page">
     <el-col>
       <el-menu
         mode="vertical"
@@ -16,14 +16,14 @@
         <template  v-for="item in items" >
           <el-submenu v-if="item.children" :index="item.path" :key="item.path">
             <template slot="title">
-              <i :class="'fa fa-margin '+item.icon"></i>
-              <span slot="title">{{item.name}}</span>
+              <i :class="'fa fa-margin ' + item.icon"></i>
+              <span slot="title">{{ item.name }}</span>
             </template>
-            <router-link v-for="(citem,cindex) in item.children"
+            <router-link v-for="(citem, cindex) in item.children"
               :to="citem.path" :key="cindex">
               <el-menu-item
-                :index='citem.path'>
-                <span slot="title">{{citem.name}}</span>
+                :index="citem.path">
+                <span slot="title">{{ citem.name }}</span>
               </el-menu-item>
             </router-link>
           </el-submenu>
@@ -56,7 +56,7 @@ export default {
 }
 </script>
 <style scoped>
-.menu_page {
+.menu-page {
   position: fixed;
   top: 71px;
   left: 0;

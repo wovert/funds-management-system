@@ -21,17 +21,9 @@ const getters = {
 const mutations = {
   [types.SET_AUTHENTICATED] (state, isAuthenticated) {
     state.isAuthenticated = isAuthenticated || false
-    // if (isAuthenticated)
-    //   state.isAuthenticated = isAuthenticated
-    // else
-    //   state.isAuthenticated = false
   },
   [types.SET_USER] (state, user) {
     state.user = user || {}
-    // if (user)
-    //   state.user = user
-    // else
-    //   state.user = {}
   }
 }
 

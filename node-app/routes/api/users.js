@@ -130,7 +130,8 @@ router.post('/login', (req, res) => {
           // 签名:规则，加密名字，过期时间，箭头函数
           const rule = {
             id: user.id,
-            name: user.name
+            name: user.name,
+            avatar: user.avatar
           }
           jwt.sign(
             rule,
